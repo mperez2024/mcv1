@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Developed by: Miguel Perez Velazquez 
+       V.1.0.3
+       2016
+       Curriculum Vitae -->
+  <script>
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    alert("Nice try! No source code for you.");
+    window.location.href = "gif/no.gif"; 
+  });
+  document.onkeydown = function(e) {
+    if (
+      e.keyCode == 123 || 
+      (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) || 
+      (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) || 
+      (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) || 
+      (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))   
+    ) {
+      alert("Keyboard shortcuts are disabled here!");
+      return false;
+    }
+  };
+  setInterval(function() {
+    debugger;
+  }, 100);
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MP&eacute;rez - Curriculum Vitae</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<!-- Favicons -->
+<link rel="shortcut icon" href="pic/favicon.ico">	
+<link rel="apple-touch-icon" href="pic/apple-touch-icon.png">
+<!-- Favicons -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a08;
+  --surface:#141410;
+  --text:#e8e6df;
+  --text-muted:#8a8880;
+  --accent:#c4a35a;
+  --accent-dim:#7a6a3a;
+  --red:#a13544;
+  --red-dim:#6a2230;
+  --teal:#20808d;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:var(--sans)}
+body{overflow-x:hidden;background:var(--bg)}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;height:100vh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero__bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(10,10,8,0.25) 0%, rgba(10,10,8,0.1) 40%, rgba(10,10,8,0.75) 100%),
+    url('https://i.gifer.com/2smJ.gif') center/cover no-repeat;
+  filter:saturate(0.75) brightness(0.55);
+  transform:scale(1.05);
+  animation:heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{0%{transform:scale(1.05)}100%{transform:scale(1.15)}}
+.hero__content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 24px}
+.hero__kicker{
+  font-family:var(--mono);font-size:11px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:24px;opacity:0;animation:fadeUp .8s .3s forwards;
+}
+.hero__title{
+  font-family:var(--serif);font-size:clamp(48px,10vw,120px);font-weight:900;
+  line-height:0.92;letter-spacing:-2px;color:var(--text);
+  opacity:0;animation:fadeUp .8s .5s forwards;
+}
+.hero__subtitle{
+  font-size:clamp(15px,2vw,19px);font-weight:300;color:var(--text-muted);
+  margin-top:20px;line-height:1.5;max-width:600px;margin-left:auto;margin-right:auto;
+  opacity:0;animation:fadeUp .8s .7s forwards;
+}
+.hero__stat-row{
+  display:flex;gap:40px;justify-content:center;margin-top:48px;
+  opacity:0;animation:fadeUp .8s .9s forwards;
+}
+.hero__stat{text-align:center}
+.hero__stat-value{font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--accent)}
+.hero__stat-label{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:4px}
+.hero__scroll{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);
+  opacity:0;animation:fadeUp .8s 1.2s forwards;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+}
+.hero__scroll-line{width:1px;height:40px;background:var(--accent-dim);position:relative;overflow:hidden}
+.hero__scroll-line::after{
+  content:'';position:absolute;top:-40px;left:0;width:1px;height:20px;background:var(--accent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{0%{top:-20px}100%{top:40px}}
+
+/* ===== SECTIONS ===== */
+.section{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  overflow:hidden;
+}
+.section__bg{
+  position:absolute;inset:0;background-size:cover;background-position:center;
+  filter:saturate(0.7) brightness(0.65);
+}
+.section__overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg, rgba(10,10,8,0.7) 0%, rgba(10,10,8,0.45) 50%, rgba(10,10,8,0.65) 100%);
+}
+.section__inner{
+  position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;
+  padding:80px 32px;
+}
+
+/* ===== TIMELINE ===== */
+.timeline{
+  position:relative;padding:80px 0;
+}
+.timeline__line{
+  position:absolute;left:50%;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,transparent,var(--accent-dim) 10%,var(--accent-dim) 90%,transparent);
+  transform:translateX(-50%);
+}
+.timeline__entry{
+  position:relative;width:100%;display:flex;align-items:flex-start;
+  margin-bottom:80px;opacity:0;transform:translateY(40px);
+  transition:opacity .6s,transform .6s;
+}
+.timeline__entry.visible{opacity:1;transform:translateY(0)}
+.timeline__entry:nth-child(odd){flex-direction:row}
+.timeline__entry:nth-child(even){flex-direction:row-reverse}
+.timeline__entry:nth-child(odd) .timeline__content{padding-right:60px;text-align:right}
+.timeline__entry:nth-child(even) .timeline__content{padding-left:60px;text-align:left}
+.timeline__content{flex:1}
+.timeline__dot{
+  position:absolute;left:50%;top:8px;width:16px;height:16px;
+  background:var(--accent);border:3px solid var(--bg);border-radius:50%;
+  transform:translateX(-50%);z-index:3;
+  box-shadow:0 0 20px rgba(196,163,90,0.4);
+}
+.timeline__year{
+  font-family:var(--serif);font-size:clamp(36px,5vw,56px);font-weight:900;
+  color:var(--accent);line-height:1;margin-bottom:8px;
+}
+.timeline__title{
+  font-family:var(--serif);font-size:clamp(18px,2.5vw,26px);font-weight:700;
+  color:var(--text);line-height:1.2;margin-bottom:12px;
+}
+.timeline__detail{
+  font-size:14px;color:var(--text-muted);line-height:1.6;max-width:400px;
+}
+.timeline__entry:nth-child(odd) .timeline__detail{margin-left:auto}
+.timeline__value{
+  display:inline-block;font-family:var(--mono);font-size:13px;
+  padding:4px 12px;border-radius:4px;margin-top:8px;
+  border:1px solid var(--accent-dim);color:var(--accent);
+}
+.timeline__status{
+  display:inline-block;font-size:11px;letter-spacing:1px;text-transform:uppercase;
+  padding:3px 10px;border-radius:3px;margin-top:6px;margin-left:4px;
+}
+.timeline__status--missing{background:rgba(32,128,141,0.2);color:#5ac0cc}
+.timeline__status--recovered{background:rgba(32,128,141,0.2);color:#5ac0cc}
+.timeline__status--partial{background:rgba(32,128,141,0.2);color:#5ac0cc}
+
+/* ===== NEWSPAPER CLIPPING ===== */
+.clipping{
+  background:#f5f0e0;color:#1a1a14;padding:24px 28px;border-radius:2px;
+  margin-top:16px;max-width:400px;position:relative;
+  box-shadow:4px 4px 20px rgba(0,0,0,0.4);
+  transform:rotate(-1deg);
+  font-family:Georgia,serif;
+}
+.timeline__entry:nth-child(odd) .clipping{margin-left:auto}
+.clipping::before{
+  content:'';position:absolute;inset:0;border-radius:2px;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 24px,rgba(0,0,0,0.03) 24px,rgba(0,0,0,0.03) 25px
+  );
+  pointer-events:none;
+}
+.clipping__head{
+  font-family:'Times New Roman',serif;font-size:9px;letter-spacing:3px;
+  text-transform:uppercase;color:#666;border-bottom:2px solid #1a1a14;
+  padding-bottom:6px;margin-bottom:10px;
+}
+.clipping__headline{
+  font-family:var(--serif);font-size:17px;font-weight:900;
+  line-height:1.2;color:#0a0a06;margin-bottom:8px;
+}
+.clipping__body{
+  font-size:12px;line-height:1.5;color:#333;
+  column-count:2;column-gap:16px;
+}
+.clipping__body p{margin-bottom:6px;text-indent:12px}
+.clipping__body p:first-child{text-indent:0}
+
+/* ===== ARTWORK CARDS ===== */
+.artwork-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;margin-top:32px;
+}
+.artwork-card{
+  position:relative;background:var(--surface);border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px;overflow:hidden;
+  opacity:0;transform:translateY(30px) scale(0.97);
+  transition:opacity .5s,transform .5s;
+}
+.artwork-card.visible{opacity:1;transform:translateY(0) scale(1)}
+.artwork-card__img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  filter:saturate(0.7);transition:filter .3s;
+}
+.artwork-card:hover .artwork-card__img{filter:saturate(1)}
+.artwork-card__body{padding:16px}
+.artwork-card__artist{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent)}
+.artwork-card__title{
+  font-family:var(--serif);font-size:16px;font-weight:700;
+  margin-top:4px;line-height:1.3;
+}
+.artwork-card__meta{font-size:12px;color:var(--text-muted);margin-top:6px}
+.artwork-card__badge{
+  position:absolute;top:12px;right:12px;
+  font-size:10px;letter-spacing:1px;text-transform:uppercase;
+  padding:4px 10px;border-radius:3px;font-weight:600;
+}
+.artwork-card__badge--missing{background:rgba(161,53,68,0.9);color:#fff} /* ===== DIPLOMA YEAR ===== */
+.artwork-card__badge--recovered{background:rgba(32,128,141,0.9);color:#fff}
+
+/* ===== DATA VIZ: BUBBLE CHART ===== */
+.viz-container{
+  position:relative;width:100%;margin-top:40px;
+}
+.viz-header{margin-bottom:24px}
+.viz-header__title{
+  font-family:var(--serif);font-size:clamp(22px,3vw,32px);font-weight:700;
+}
+.viz-header__sub{font-size:14px;color:var(--text-muted);margin-top:6px}
+
+/* ===== DETAIL PANEL ===== */
+.heist-panel{
+  background:var(--surface);border:1px solid rgba(255,255,255,0.08);
+  border-radius:12px;padding:32px;margin-top:32px;
+  display:grid;grid-template-columns:1fr 1fr;gap:32px;
+  opacity:0;transform:translateY(30px);transition:all .5s;
+}
+.heist-panel.visible{opacity:1;transform:translateY(0)}
+.heist-panel__left{}
+.heist-panel__right{display:flex;flex-direction:column;gap:16px}
+.heist-panel__kicker{
+  font-family:var(--mono);font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;color:var(--red);margin-bottom:8px;
+}
+.heist-panel__title{
+  font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:900;
+  line-height:1.1;margin-bottom:16px;
+}
+.heist-panel__desc{font-size:15px;line-height:1.7;color:var(--text-muted)}
+.heist-panel__fact{
+  display:flex;align-items:baseline;gap:12px;
+  padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.heist-panel__fact-label{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-muted);min-width:90px;
+}
+.heist-panel__fact-value{font-size:15px;color:var(--text);font-weight:500}
+
+/* ===== INTERACTIVE CHART ===== */
+#valueChart{width:100%;max-width:900px;margin:0 auto}
+.bar-row{
+  display:flex;align-items:center;gap:12px;margin-bottom:14px;
+  cursor:pointer;position:relative;
+}
+.bar-row:hover .bar-fill{filter:brightness(1.2)}
+.bar-label{
+  font-size:12px;color:var(--text-muted);min-width:200px;text-align:right;
+  font-weight:500;
+}
+.bar-track{flex:1;height:32px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;position:relative}
+.bar-fill{
+  height:100%;border-radius:4px;position:relative;
+  width:0;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.bar-value{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:12px;color:var(--text);
+  white-space:nowrap;
+}
+.bar-value--outside{
+  position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:12px;color:var(--text-muted);
+  white-space:nowrap;
+}
+
+/* ===== METHODS SECTION ===== */
+.methods-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;margin-top:32px;
+}
+.method-card{
+  padding:24px;border:1px solid rgba(255,255,255,0.08);border-radius:8px;
+  background:rgba(255,255,255,0.02);text-align:center;
+  opacity:0;transform:translateY(20px);transition:all .5s;
+}
+.method-card.visible{opacity:1;transform:translateY(0)}
+.method-card__icon{font-size:36px;margin-bottom:12px}
+.method-card__title{font-family:var(--serif);font-size:16px;font-weight:700;margin-bottom:6px}
+.method-card__count{
+  font-family:var(--mono);font-size:24px;font-weight:700;color:var(--accent);
+}
+.method-card__desc{font-size:12px;color:var(--text-muted);margin-top:4px}
+
+/* ===== MAP SECTION ===== */
+.map-section{
+  position:relative;padding:80px 32px;
+}
+.map-container{
+  position:relative;width:100%;max-width:1000px;margin:0 auto;
+  aspect-ratio:2/1;
+}
+.map-container svg{width:100%;height:100%}
+.map-dot{
+  cursor:pointer;transition:all .3s;
+}
+.map-dot:hover{filter:drop-shadow(0 0 12px rgba(196,163,90,0.6))}
+.map-tooltip{
+  position:fixed;background:var(--surface);border:1px solid var(--accent-dim);
+  padding:12px 16px;border-radius:6px;pointer-events:none;
+  z-index:100;max-width:280px;opacity:0;transition:opacity .2s;
+  box-shadow:0 8px 32px rgba(0,0,0,0.5);
+}
+.map-tooltip.show{opacity:1}
+.map-tooltip__title{font-family:var(--serif);font-size:14px;font-weight:700}
+.map-tooltip__detail{font-size:12px;color:var(--text-muted);margin-top:4px}
+
+/* ===== RECOVERY COUNTER ===== */
+.recovery{
+  display:flex;gap:40px;justify-content:center;flex-wrap:wrap;
+  margin-top:40px;
+}
+.recovery__ring{
+  position:relative;width:140px;height:140px;
+}
+.recovery__ring svg{transform:rotate(-90deg)}
+.recovery__ring-bg{fill:none;stroke:rgba(255,255,255,0.06);stroke-width:8}
+.recovery__ring-fill{
+  fill:none;stroke-width:8;stroke-linecap:round;
+  stroke-dasharray:var(--dash);stroke-dashoffset:var(--dash);
+  transition:stroke-dashoffset 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+.recovery__ring.animated .recovery__ring-fill{stroke-dashoffset:var(--offset)}
+.recovery__ring-label{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+}
+.recovery__ring-pct{
+  font-family:var(--serif);font-size:28px;font-weight:900;
+}
+.recovery__ring-text{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+
+/* ===== SECTION HEADERS ===== */
+.section-header{
+  text-align:center;margin-bottom:48px;
+}
+.section-header__kicker{
+  font-family:var(--mono);font-size:11px;letter-spacing:4px;
+  text-transform:uppercase;color:var(--accent);margin-bottom:12px;
+}
+.section-header__title{
+  font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:900;
+  line-height:1.1;
+}
+.section-header__sub{
+  font-size:15px;color:var(--text-muted);margin-top:12px;max-width:600px;
+  margin-left:auto;margin-right:auto;line-height:1.6;
+}
+
+/* ===== BREAKING NEWS BANNER ===== */
+.breaking{
+  position:relative;overflow:hidden;padding:60px 32px;
+  background:linear-gradient(135deg,#1a0a0e,#0a0a08);
+  border-top:3px solid var(--red);
+}
+.breaking__flash{
+  display:inline-block;background:var(--red);color:#fff;
+  font-family:var(--mono);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;padding:4px 12px;border-radius:2px;
+  animation:flashPulse 2s ease-in-out infinite;
+}
+@keyframes flashPulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.breaking__title{
+  font-family:var(--serif);font-size:clamp(28px,4vw,48px);font-weight:900;
+  margin-top:16px;line-height:1.1;
+}
+.breaking__sub{font-size:15px;color:var(--text-muted);margin-top:12px;line-height:1.6;max-width:700px}
+
+/* ===== FOOTER ===== */
+.footer{
+  padding:60px 32px;border-top:1px solid rgba(255,255,255,0.06);
+  text-align:center;
+}
+.footer__sources{
+  font-size:12px;color:var(--text-muted);line-height:1.8;
+  max-width:700px;margin:0 auto;
+}
+.footer__sources a{color:var(--accent);text-decoration:none}
+.footer__sources a:hover{text-decoration:underline}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.animate-on-scroll{
+  opacity:0;transform:translateY(30px);
+  transition:opacity .6s,transform .6s;
+}
+.animate-on-scroll.visible{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .timeline__line{left:24px}
+  .timeline__entry,.timeline__entry:nth-child(even){flex-direction:column;padding-left:48px}
+  .timeline__entry:nth-child(odd) .timeline__content,
+  .timeline__entry:nth-child(even) .timeline__content{padding:0;text-align:left}
+  .timeline__entry:nth-child(odd) .timeline__detail{margin-left:0}
+  .timeline__entry:nth-child(odd) .clipping{margin-left:0}
+  .timeline__dot{left:24px}
+  .heist-panel{grid-template-columns:1fr}
+  .hero__stat-row{gap:24px}
+  .bar-label{min-width:120px;font-size:11px}
+  .clipping__body{column-count:1}
+}
+
+/* Noise overlay */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat:repeat;opacity:0.5;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__content">
+    <div class="hero__kicker">Curriculum Vitae</div>
+    <h1 class="hero__title">Miguel E. P&eacute;rez</h1>
+    <p class="hero__subtitle">Technical professional focused on process integrity, safety, and efficiency in highly regulated environments.</p>
+    <div class="hero__stat-row">
+      <div class="hero__stat">
+        <div class="hero__stat-value" data-count="3">0</div>
+        <div class="hero__stat-label">Academic Achievement</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value" data-count="3">0</div>
+        <div class="hero__stat-label">Professional Specializations</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value" data-count="8" data-suffix="+">0</div>
+        <div class="hero__stat-label">Years of Experience</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    Scroll
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== BREAKING: ===== -->
+<section class="breaking" id="breaking">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="breaking__flash">M.Sc.IT</div>
+    <h2 class="breaking__title">Academic Background
+    <p class="breaking__sub">A combination of studies in technology that has helped me tackle challenges encountered at various companies.</p>
+
+    <div class="artwork-grid" style="margin-top:32px;">
+      <div class="artwork-card animate-on-scroll">
+        <img class="artwork-card__img" src="pic/md.jpg">
+        <div class="artwork-card__body">
+          <div class="artwork-card__artist">Master Degree</div>
+          <div class="artwork-card__title">Information Technology</div>
+          <div class="artwork-card__meta">National University · 2021 - 2023. · <a style="color:#c4a35a;" href="pic/MasterDegree.pdf"target="_blank">Download</a></div>
+        </div>
+        <div class="artwork-card__badge artwork-card__badge--missing">2023</div>
+      </div>
+      <div class="artwork-card animate-on-scroll" style="transition-delay:.1s">
+        <img class="artwork-card__img" src="pic/a1.jpg">
+        <div class="artwork-card__body">
+          <div class="artwork-card__artist">Associate degree</div>
+          <div class="artwork-card__title">Digital Electronics & Microprocessors</div>
+          <div class="artwork-card__meta">Columbia University · 2002 - 2004. · <a style="color:#c4a35a;" href="pic/AssociateDegree.pdf"target="_blank">Download</a></div>
+        </div>
+        <div class="artwork-card__badge artwork-card__badge--missing">2004</div>
+      </div>
+      <div class="artwork-card animate-on-scroll" style="transition-delay:.2s">
+        <img class="artwork-card__img" src="pic/bd.jpg">
+        <div class="artwork-card__body">
+          <div class="artwork-card__artist">Bachelor's Degree</div>
+          <div class="artwork-card__title">Information Technology Security & Assurance</div>
+          <div class="artwork-card__meta">National University · 2016 - 2020. · <a style="color:#c4a35a;" href="pic/BachelorDegree.pdf"target="_blank">Download</a></div>
+        </div>
+        <div class="artwork-card__badge artwork-card__badge--missing">2020</div>
+      </div>
+    </div>
+
+    <!-- Newspaper clipping -->
+    <div class="clipping animate-on-scroll" style="margin-top:32px;max-width:500px;transform:rotate(-0.5deg)">
+      <div class="clipping__head">Miguel E. P&eacute;rez Vel&aacute;zquez · <script>
+          const now = new Date();
+          const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          const dayName = daysOfWeek[now.getDay()];
+          const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+          ];
+          const monthName = months[now.getMonth()];
+          const day = now.getDate();
+          const year = now.getFullYear();
+
+          document.write(dayName + ", " + monthName + " " + day + ", " + year + ".");
+        </script></div>
+      <div class="clipping__headline">From pharmaceutical manufacturing and IT support to web creation and cybersecurity.</div>
+      <div class="clipping__body">
+        <p>Information & Automation Technician with a 8-year track record in FDA-regulated industries, electronics, and IT.</p>
+        <p>Specialized in the operation and maintenance of high-stakes automated systems and the management of secure networking infrastructures.</p>
+        <p>Ensured operational excellence by resolving complex technical issues and aligning technology across all departments to support business continuity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====  ===== -->
+<section class="section" id="louvre">
+  <div class="section__bg" style="background-image:url('pic/mr.jpg')"></div>
+  <div class="section__overlay"></div>
+  <div class="section__inner">
+    <div class="heist-panel animate-on-scroll">
+      <div class="heist-panel__left">
+        <div class="heist-panel__kicker">Manufacturing and Process Technician</div>
+        <div class="heist-panel__title">FDA-Regulated Environments</div>
+        <div class="heist-panel__desc">
+          Proficient in the operation, diagnostic, and troubleshooting of automated systems within
+           FDA-regulated Pharmaceutical and Biotech environments. I leverage a dual background in
+            Electronics and Information Technology to manage everything from hardware maintenance
+             to cybersecurity and networking. Proven track record in manufacturing, QC and technical
+              support, dedicated to ensuring that mission-critical technology remains secure, accessible, and
+               performing at peak capacity across the entire organization.<br><br>
+          <a style="color:#c4a35a;" href="pic/cv.pdf"target="_blank">Updated Resume</a><br><br>
+          <strong>Execute and Dontrol:</strong> Direct experience in auditing incoming components to ensure they meet exact specifications
+           vital in OSD environments, where raw materials, excipients, and active pharmaceutical
+            ingredients (APIs) must adhere to strictly defined quality standards before entering the
+             production line. 
+        </div>
+      </div>
+      <div class="heist-panel__right">
+        <div class="heist-panel__fact">
+          <span class="heist-panel__fact-label">cGMPs </span>
+          <span class="heist-panel__fact-value">Quality Management, Facility / Personnel Standards </span>
+        </div>
+        <div class="heist-panel__fact">
+          <span class="heist-panel__fact-label">Ganulation</span>
+          <span class="heist-panel__fact-value">Hight Shear, TK Fielder</span>
+        </div>
+        <div class="heist-panel__fact">
+          <span class="heist-panel__fact-label">Blending</span>
+          <span class="heist-panel__fact-value">PK Blender Twin Shell Dry Blender</span>
+        </div>
+        <div class="heist-panel__fact">
+          <span class="heist-panel__fact-label">Mixing</span>
+          <span class="heist-panel__fact-value">Gemco</span>
+        </div>
+        <div class="heist-panel__fact">
+          <span class="heist-panel__fact-label">Drying</span>
+          <span class="heist-panel__fact-value">Glatt Fluid bed dryer</span>
+        </div>
+        <div class="heist-panel__fact">
+          <span class="heist-panel__fact-label">Milling</span>
+          <span class="heist-panel__fact-value">Quadro Comill, FitzMill</span>
+        </div>
+        <div class="heist-panel__fact">
+          <span class="heist-panel__fact-label">Sieving</span>
+          <span class="heist-panel__fact-value">Rusell</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newspaper clipping -->
+    <div class="clipping animate-on-scroll" style="margin-top:32px;max-width:500px;transform:rotate(0.7deg)">
+      <div class="clipping__head">Information Technology · M.Sc.IT</div>
+      <div class="clipping__headline">Infrastructure Management — System Administration & Scripting</div>
+      <div class="clipping__body">
+        <p>Responsible for serving as the primary point of contact for infrastructure maintenance, user support, and systems security. </p>
+        <p>Act as second- or third-level support to resolve complex end-user issues that cannot be handled by the help desk.</p>
+      </div>
+    </div><br><br>
+    <!-- ===== REFERENCE ===== -->
+<div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:24px">
+      "Reference for this image at the bottom of the page."
+    </div>
+<!-- ===== REFERENCE ===== -->
+  </div>
+</section>
+
+<!-- ===== VALUE COMPARISON CHART ===== -->
+<section class="section" id="values">
+<div class="section__bg" style="background-image:url('pic/ph.jpg')"></div>
+  <div class="section__overlay"></div>
+  <div class="section__inner">
+    <div class="section-header animate-on-scroll">
+      <div class="section-header__kicker">By the Numbers</div>
+      <div class="section-header__title">Regulatory Training</div>
+      <div class="section-header__sub">Training received through various companies regulated by the FDA, OSHA, ATF, ISACA, CISCO and Microsoft.<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #00FFFF;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>1990 T0 2025</h2><br>
+
+<table>
+  <tr>
+    <th>Parmaceutical</th>
+    <th>Electronics</th>
+    <th>Information Technology</th>
+  </tr>
+  <tr>
+    <td>cGMPs</td>
+    <td>ESD</td>
+    <td>Agile, Scrum, PMBOK</td>
+  </tr>
+  <tr>
+    <td>Environmental, Health, and Safety (EHS)</td>
+    <td>ATE</td>
+    <td>GDPR, SOX, Gramm–Leach–Bliley Act (GLBA)</td>
+  </tr>
+  <tr>
+    <td>Lock out Tag Out (LOTO)</td>
+    <td>HP 3070</td>
+    <td>ITIL, TCP/IP</td>
+  </tr>
+  <tr>
+    <td>CAPA</td>
+    <td>SMT/THM Component Inspection</td>
+    <td>PenTesting</td>
+  </tr>
+  <tr>
+    <td>FIFO, PPE, MSDS</td>
+    <td>QC</td>
+    <td>NIST Cybersecurity Framework</td>
+  </tr>
+  <tr>
+    <td>Quality Management Systems (QMS)</td>
+    <td>QA</td>
+    <td>CIA Triad, Zero Trust</td>
+  </tr>
+</table></div>
+    </div>
+
+    <div id="valueChart" class="animate-on-scroll">
+      <!--  -->
+    </div><br>
+
+    <div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:24px">
+      "Reference for this image at the bottom of the page."
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="section" style="min-height:auto;padding:80px 0" id="timeline-section">
+  <div class="section__bg" style="background-image:url('pic/12.jpg')"></div>
+  <div class="section__overlay" style="background:linear-gradient(180deg,rgba(10,10,8,0.72),rgba(10,10,8,0.55),rgba(10,10,8,0.72))"></div>
+  <div style="position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 32px">
+    <div class="section-header animate-on-scroll">
+      <div class="section-header__kicker">Through the Years</div>
+      <div class="section-header__title">A Timeline of Experiences</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline__line"></div>
+
+      <!--  -->
+      <div class="timeline__entry">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <div class="timeline__year">1990</div>
+          <div class="timeline__title">P&eacute;rez & CIA (ABARCA) Pier 15 — San Juan, PR.</div>
+          <div class="timeline__detail">
+            Responsible for repairing and adjusting mechanical parts in diesel engines of cargo ships, operating heavy transport equipment using safety techniques at all times. Rectify ship propellers and install them on the propulsion shaft.
+            <div>
+              <span class="timeline__value">Diesel Mechanic</span>
+              <span class="timeline__status timeline__status--recovered">1990 To 1992</span>
+            </div>
+          </div>
+          <div class="clipping" style="transform:rotate(-1.5deg)">
+            <div class="clipping__head">Dry Dock · Pier 15 · San Juan, PR.</div>
+            <div class="clipping__headline">Cylinder Head, Propellers and Shaft Resurfacing and Adjustment</div>
+            <div class="clipping__body">
+              <p>Primary role in the maritime industry, focusing on the maintenance, troubleshooting, and repair of diesel engines and power systems on vessels while they are in dry dock.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="timeline__entry">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <div class="timeline__year">1993</div>
+          <div class="timeline__title">Mova Pharmaceutical / Merck Department — Caguas, PR.</div>
+          <div class="timeline__detail">
+            Operate high-shear mixer, fluid bed dryers,
+             and blenders, including performing machine changeovers, calibration, and
+              preventative maintenance. 
+               Weigh, dispense, mix, and granulate materials,
+               while accurately documenting all steps in logbooks and batch records. Inject the granulating solution chronometrically
+               into the High Shear Mixer during the manufacturing of Mevacor (lovastatin) and Zocor (simvastatin). Identify and resolve basic
+                processing issues, participate in continuous improvement projects,
+                  and assisting in the training of other operators.
+            <div>
+              <span class="timeline__value"><a style="color:#c4a35a;" href="mis/mo.png"target="_blank">Process Technician</a></span>
+              <span class="timeline__status timeline__status--missing">1993 To 1995</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="timeline__entry">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <div class="timeline__year">1995</div>
+          <div class="timeline__title">Intel — Las Piedras, PR.</div>
+          <div class="timeline__detail">
+            Diagnostic and test electronic components in PC boards using ATE machine, assign addresses to the digital component of the MAC Address by scanning the encoding for that single device. 
+            <div>
+              <span class="timeline__value"><a style="color:#c4a35a;" href="mis/ate.JPG"target="_blank">Test Technician</a></span>
+              <span class="timeline__status timeline__status--missing">1995 To 1999</span>
+            </div>
+          </div>
+          <div class="clipping" style="transform:rotate(0.8deg)">
+            <div class="clipping__head">Caribbean Base Board Plant · Line-4</div>
+            <div class="clipping__headline">GenRad GR-228X / HP-3070</div>
+            <div class="clipping__body">
+              <p>Assemble and troubleshoot i486 and Pentium 3 and 4 Microprocessor, memory banks, configuration jumpers, CMOS batteries,
+                EPROM, PAL, PROM and input and output peripherals to perform quality testing on finished server PCBs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="timeline__entry">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <div class="timeline__year">2000</div>
+          <div class="timeline__title">DAIG / St. Jude Medical — Caguas, PR.</div>
+          <div class="timeline__detail">
+             Resposible to develop a strategy that the team members can use to better reach a <a style="color:#c4a35a;" href="mis/minnesota.jpg"target="_blank">project’s goal</a>,
+             assign tasks to team members of the Suture Preparation, Knot Tie, Crush and Crimp, Winding, Pull Test,
+              Peel Test, Vaccum Sealer and Drying Ovens cells, determine the completion timeline, KPI and monitor progress
+               to keep the project on track and on schedule, create and distribute reports to update the company on
+                the team’s progress.<div>
+              <span class="timeline__value"><a style="color:#c4a35a;" href="mis/sjm.png"target="_blank">Line Lead / QC</a></span>
+              <span class="timeline__status timeline__status--recovered">2000 To 2004</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="timeline__entry">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <div class="timeline__year">2006</div>
+          <div class="timeline__title">Medtronic — Juncos, PR.</div>
+          <div class="timeline__detail">
+            Responsible for the operation and adjustment of medical device
+             assembly equipment, following detailed instructions and ISO regulations.
+             Verify the functionality of glucose infusion devices and document the
+              results in the company system; should any non-conformance arise, promptly
+               report it to the supervisor.
+            <div>
+              <span class="timeline__value"><a style="color:#c4a35a;" href="mis/mt.png"target="_blank">Manufacturing</a></span>
+              <span class="timeline__status timeline__status--missing">2006 To 2009</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="timeline__entry">
+        <div class="timeline__dot"></div>
+        <div class="timeline__content">
+          <div class="timeline__year">2010</div>
+          <div class="timeline__title">McNeil Pharmaceutical — Las Piedras, PR.</div>
+          <div class="timeline__detail">
+            Weigh and document APIs and excipients to be granulated, verify cleanliness, relative humidity of the process room and equipment calibrations to begin the loading, mixing and granulation process.
+            Operate, troubleshoot, disassemble, and reassemble granulation equipment such as Low and High Shear Mixers, Solution Reactors, Milling Machines, and Fluid Bed Dryers in accordance with applicable cGMPs and SOPs.
+            <div>
+              <span class="timeline__value"><a style="color:#c4a35a;" href="mis/mc.png"target="_blank">Process Technician</a></span>
+              <span class="timeline__status timeline__status--missing">2010 To 2014</span>
+            </div>
+          </div>
+          <div class="clipping" style="transform:rotate(-0.3deg)">
+            <div class="clipping__head">Granulation · Coating and Printing</div>
+            <div class="clipping__headline">Solutions Preparation and Mixing</div>
+            <div class="clipping__body">
+              <p>Performed dismantling of pressurized tanks for major cleaning of the processing room and validated the room's cleanliness before starting the next batch. Prepared solutions and verified viscosity parameters for use in the tablet coating area.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="timeline__entry">
+        <div class="timeline__dot" style="background:var(--red);box-shadow:0 0 20px rgba(161,53,68,0.6)"></div>
+        <div class="timeline__content">
+          <div class="timeline__year" style="color:var(--red)">2014</div>
+          <div class="timeline__title">Lilly Parmaceutical — Carolina, PR. </div>
+          <div class="timeline__detail">
+            Responsible for setup, maintenance, troubleshooting and machine operation
+             along with in process LOD test for granulation department. Weight APIs and
+              excipients to be processed in solid dosage. Inject granulating solution for
+               the conversion of batch granules following SOP and cGMPs procedures.
+            <div>
+              <span class="timeline__value">Manufacturing Ossociate</span>
+              <span class="timeline__status timeline__status--partial">2014 TO 2016</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+      <div class="timeline__entry">
+        <div class="timeline__dot" style="background:var(--red);box-shadow:0 0 20px rgba(161,53,68,0.6);animation:flashPulse 2s infinite"></div>
+        <div class="timeline__content">
+          <div class="timeline__year" style="color:var(--red)">2018</div>
+          <div class="timeline__title">Cooper Vision — Juana D&iacute;az, PR.</div>
+          <div class="timeline__detail">
+            Responsible for measuring contact lens tolerances using specialized equipment
+             designed for this type of polymer product. Based on measurement results—and utilizing
+              statistics and probability—the injection molding machine operator was informed of the
+               adjustments required for the equipment, and which batches met the required specifications.
+            <div>
+              <span class="timeline__value"><a style="color:#c4a35a;" href="mis/co.png"target="_blank">QC. Technician</a></span>
+              <span class="timeline__status timeline__status--missing">2018 TO 2019</span>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== REFERENCE ===== -->
+<div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:24px">
+      "Reference for this image at the bottom of the page."
+    </div>
+<!-- ===== REFERENCE ===== -->
+
+  </div>
+</section>
+
+<!-- ===== METHODS OF ENTRY ===== -->
+<section class="section" id="methods">
+  <div class="section__bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/2/26/Diabetes_Facility.jpg')"></div>
+  <div class="section__overlay"></div>
+  <div class="section__inner">
+    <div class="section-header animate-on-scroll">
+      <div class="section-header__kicker">Project Management Framework</div>
+      <div class="section-header__title">Agile methodology</div>
+      <div class="section-header__sub">Active execution of the information systems migration project in the data center of the San Juan PR. VA Hospital.</div>
+    </div>
+
+    <div class="methods-grid">
+      <div class="method-card animate-on-scroll">
+        <div class="method-card__icon">🔄</div>
+        <div class="method-card__title">Scrum</div>
+        <div class="method-card__count" data-count="87" data-suffix="%">0</div>
+        <div class="method-card__desc">Used in electronics companies</div>
+      </div>
+      <div class="method-card animate-on-scroll" style="transition-delay:.1s">
+        <div class="method-card__icon">🎫</div>
+        <div class="method-card__title">Kanban</div>
+        <div class="method-card__count" data-count="100" data-suffix="%">0</div>
+        <div class="method-card__desc">Used in pharmaceutical companies</div>
+      </div>
+      <div class="method-card animate-on-scroll" style="transition-delay:.2s">
+        <div class="method-card__icon">🧗</div>
+        <div class="method-card__title">XP</div>
+        <div class="method-card__count" data-count="60" data-suffix="%">0</div>
+        <div class="method-card__desc">Used at the Veterans Hospital</div>
+      </div>
+      <div class="method-card animate-on-scroll" style="transition-delay:.3s">
+        <div class="method-card__icon">🏗️</div>
+        <div class="method-card__title">APF</div>
+        <div class="method-card__count" data-count="60" data-suffix="%">0</div>
+        <div class="method-card__desc">Used at the Veterans Hospital</div>
+      </div>
+    </div>
+
+    <!--  -->
+    <div style="margin-top:80px">
+      <div class="section-header animate-on-scroll">
+        <div class="section-header__kicker">PMI</div>
+        <div class="section-header__title">Project Management Body of Knowledge</div>
+        <div class="section-header__sub">I was in charge of a server migration. I served as the technical lead. I used Jira to track the tasks. We successfully completed the project without impacting users and saved 10% of the initial budget.</div>
+      </div>
+
+      <div class="recovery">
+        <div class="recovery__ring" style="--dash:377;--offset:113">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle class="recovery__ring-bg" cx="70" cy="70" r="60"/>
+            <circle class="recovery__ring-fill" cx="70" cy="70" r="60" stroke="var(--teal)"/>
+          </svg>
+          <div class="recovery__ring-label">
+            <div class="recovery__ring-pct" style="color:var(--teal)">30%</div>
+            <div class="recovery__ring-text">Process Groups</div>
+          </div>
+        </div>
+        <div class="recovery__ring" style="--dash:377;--offset:188">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle class="recovery__ring-bg" cx="70" cy="70" r="60"/>
+            <circle class="recovery__ring-fill" cx="70" cy="70" r="60" stroke="var(--red)"/>
+          </svg>
+          <div class="recovery__ring-label">
+            <div class="recovery__ring-pct" style="color:var(--red)">50%</div>
+            <div class="recovery__ring-text">Knowledge Areas</div>
+          </div>
+        </div>
+        <div class="recovery__ring" style="--dash:377;--offset:302">
+          <svg width="140" height="140" viewBox="0 0 140 140">
+            <circle class="recovery__ring-bg" cx="70" cy="70" r="60"/>
+            <circle class="recovery__ring-fill" cx="70" cy="70" r="60" stroke="var(--accent)"/>
+          </svg>
+          <div class="recovery__ring-label">
+            <div class="recovery__ring-pct" style="color:var(--accent)">20%</div>
+            <div class="recovery__ring-text">Agile Integration</div>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <!-- ===== Photo adaptation ===== -->
+    <div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:24px">
+      All the images and last updates of the page have been executed by: MPérez <span id="currentYear"></span>.
+<script>
+  document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
+    </div>
+    <!-- ===== Photo adaptation ===== -->
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="section" style="min-height:80vh">
+  <div class="section__bg" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/b/bd/Pharmaceutical_Factory.jpg')"></div>
+  <div class="section__overlay" style="background:linear-gradient(180deg,rgba(10,10,8,0.68),rgba(10,10,8,0.48),rgba(10,10,8,0.72))"></div>
+  <div class="section__inner" style="text-align:center">
+    <div class="animate-on-scroll" style="max-width:700px;margin:0 auto">
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:16px">Contact</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.35">
+         <html>
+   <style>
+      address {
+         font-style: normal;
+         background-color: hsla(180, 7%, 38%, 0.5);
+         padding: 15px;
+         border-radius: 8px;
+         margin: 20px 0;
+      }
+   </style>
+<body style="font-family: Arial, sans-serif; padding: 10px;">
+   <h2>Miguel E. P&eacute;rez Vel&aacute;zquez</h2>
+   <address>
+      <strong>(939) 220-1491</strong><br>
+      Urbanización La Cumbre II<br>
+      9W5F+93J, Cll Caparra,  <br>
+      San Juan, PR. 00926<br>
+      <br>
+      <strong>Email: </strong> <a style="color:#c4a35a;" href="mailto:mepv2015hotmail.com">mepv2015hotmail.com</a><br><br>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d183.1618303511059!2d-65.88567656970288!3d18.197827964099307!2m3!1f270!2f44.976059654545764!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x8c0369bbcb058fa9%3A0xc9ccf29369c90e90!2sUrbanizaci%C3%B3n%20La%20Cumbre%20II!5e1!3m2!1ses-419!2sus!4v1777154187760!5m2!1ses-419!2sus" width="80%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+   </address>
+</body>
+</html>
+      </h2>
+      <p style="font-size:16px;color:var(--text-muted);margin-top:20px;line-height:1.7"><br>      
+      </p>
+    </div>
+    <!-- ===== REFERENCE ===== -->
+<div style="font-size:11px;color:var(--text-muted);text-align:center;margin-top:24px">
+      "Reference for this image at the bottom of the page."
+    </div>
+<!-- ===== REFERENCE ===== -->
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer__sources"> 
+    <strong style="color:var(--text)">Image Credits</strong><br><br>
+    Mixing Room (2020): <a href="https://cdn2.vestikamaza.ru/post/2026/04/15/51948/grid.jpg?1776257786"target="_blank">BezFormdata</a>, Public domain. — 
+    Process Room (2025): <a href="https://www.hydrochemindia.com/public/uploads/images/service/1714816135.webp"target="_blank">Hydrochem Engineers </a>, Public domain. — 
+    Parmaceutical Process (2020): <a href="https://media.licdn.com/dms/image/v2/D4E22AQFQj1y_dZjXEA/feedshare-shrink_1280/B4EZuYayjEGoAs-/0/1767788720025?e=2147483647&v=beta&t=TrPPtizgiodRFbrktXHZJCPQuO_qSy9-mdQDrwBadFs"target="_blank">Bellen Chemistry</a>, Public domain. —<br>
+    API solution Tank (2014): <a href="https://upload.wikimedia.org/wikipedia/commons/2/26/Diabetes_Facility.jpg"target="_blank">WikiMedia Commons</a>, Public domain. — 
+    API Tanks, Process Room (2019): <a href="https://upload.wikimedia.org/wikipedia/commons/b/bd/Pharmaceutical_Factory.jpg"target="_blank">WikiMedia Commons</a>, Public domain.
+   — Interactive Map (2026): <a href="https://www.google.com/maps/place/Urbanizaci%C3%B3n+La+Cumbre+II/@18.3584628,-66.077354,635m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8c0369bbcb058fa9:0xc9ccf29369c90e90!8m2!3d18.3584628!4d-66.077354!16s%2Fg%2F11j4vlt36j?hl=es-419&entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"target="_blank">Google Map</a>, Public domain.<br><br>
+    
+    <strong style="color:var(--text)">Page Information</strong><br>
+    <p>Copyright &copy; <span id="year"></span>. <strong>Curriculum Vitae</strong> All Rights Reserved. — Page developed by: <a href="https://mperez2024.github.io/mptech/"target="_blank">MP-Tech</a> — United States. <img src="pic/flag.png"width="20" height="12" alt="" /></p></p>
+		        <script>
+		        document.getElementById("year").textContent = new Date().getFullYear();
+		        </script>
+  </div>
+</footer>
+
+<script>
+// ===== Intersection Observer for scroll animations =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Trigger counter animations
+      if (entry.target.querySelector('[data-count]')) {
+        entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
+      }
+      // Trigger ring animations
+      if (entry.target.classList.contains('recovery__ring')) {
+        entry.target.classList.add('animated');
+      }
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.animate-on-scroll, .timeline__entry, .artwork-card, .method-card, .heist-panel, .recovery__ring').forEach(el => {
+  observer.observe(el);
+});
+
+// ===== Counter Animation =====
+function animateCounter(el) {
+  if (el.dataset.animated) return;
+  el.dataset.animated = 'true';
+  const target = parseFloat(el.dataset.count);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const decimals = parseInt(el.dataset.decimals || '0');
+  const duration = 1500;
+  const start = performance.now();
+  
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = target * eased;
+    el.textContent = prefix + current.toFixed(decimals) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Hero counters
+document.querySelectorAll('.hero__stat-value').forEach(el => {
+  setTimeout(() => animateCounter(el), 1200);
+});
+
+// ===== Bar Chart =====
+const heists = [
+  
+];
+
+// Sort by value descending
+heists.sort((a, b) => b.value - a.value);
+const maxVal = heists[0].value;
+const chartEl = document.getElementById('valueChart');
+
+heists.forEach((h, i) => {
+  const pct = (h.value / maxVal) * 100;
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.style.transitionDelay = `${i * 0.08}s`;
+  
+  const statusClass = h.status.includes('Missing') || h.status.includes('Destroyed') || h.status.includes('Never')
+    ? 'color:var(--red)'
+    : h.status.includes('Investigation')
+    ? 'color:var(--accent)'
+    : 'color:var(--teal)';
+  
+  row.innerHTML = `
+    <div class="bar-label">${h.name}</div>
+    <div class="bar-track">
+      <div class="bar-fill" style="background:${h.color};width:0" data-width="${pct}%">
+        ${pct > 25 ? `<span class="bar-value">$${h.value}M${h.note ? ' ' + h.note : ''}</span>` : ''}
+      </div>
+      ${pct <= 25 ? `<span class="bar-value--outside" style="left:${pct}%">$${h.value}M</span>` : ''}
+    </div>
+  `;
+  chartEl.appendChild(row);
+});
+
+// Animate bars on scroll
+const chartObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+      }, 300);
+    }
+  });
+}, { threshold: 0.3 });
+chartObserver.observe(chartEl);
+
+// ===== Method counter animation =====
+document.querySelectorAll('.method-card__count').forEach(el => {
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  countObserver.observe(el);
+});
+
+// ===== Smooth parallax on hero =====
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrollY = window.scrollY;
+      const heroBg = document.querySelector('.hero__bg');
+      if (heroBg && scrollY < window.innerHeight) {
+        heroBg.style.transform = `scale(${1.05 + scrollY * 0.0002}) translateY(${scrollY * 0.3}px)`;
+      }
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+</script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>
