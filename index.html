@@ -625,11 +625,22 @@ body::before{
     <div class="section-header animate-on-scroll">
       <div class="section-header__kicker">By the Numbers</div>
       <div class="section-header__title">Regulatory Training</div>
-      <div class="section-header__sub">Training received through various companies regulated by the FDA, OSHA and ATF.<style>
+      <div class="section-header__sub">Training received through various companies regulated by the FDA, OSHA and ATF.
+<style>
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; 
+  margin-bottom: 15px;
+}
+
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  min-width: 600px; 
 }
 
 td, th {
@@ -641,49 +652,50 @@ td, th {
 tr:nth-child(even) {
   background-color: hsla(180, 5%, 12%, 0.5);
 }
-</style>
+</style>	  
 </head>
 <body>
 
 <h2>2000 T0 2025</h2><img src="pic/iso.png" width="57" height="50" alt="ISO" /><br>
-
-<table>
-  <tr>
-    <th>Parmaceutical</th>
-    <th>Electronics</th>
-    <th>Information Technology</th>
-  </tr>
-  <tr>
-    <td>cGMPs,Traceability</td>
-    <td>ESD</td>
-    <td>Agile, Scrum, PMBOK</td>
-  </tr>
-  <tr>
-    <td>Environmental, Health, and Safety (EHS), OSHA-10</td>
-    <td>GR228X</td>
-    <td>GDPR, SOX, Gramm–Leach–Bliley Act (GLBA), HIPAA</td>
-  </tr>
-  <tr>
-    <td>Lock out Tag Out (LOTO)</td>
-    <td>HP 3070</td>
-    <td>ITIL, TCP/IP</td>
-  </tr>
-  <tr>
-    <td>ISO 9001, ISO 14644-5:2025, ISO 13485 - Medical Devices</td>
-    <td>SMT/THM Component Inspection</td>
-    <td>PenTesting, ISO/IEC 15408-5:2026, ISO/IEC 29100:2024</td>
-  </tr>
-  <tr>
-    <td>FIFO, PPE, MSDS</td>
-    <td>QC</td>
-    <td>NIST Cybersecurity Framework</td>
-  </tr>
-  <tr>
-    <td>Quality Management Systems (QMS), CAPA</td>
-    <td>QA, OSHA-29 CFR 1910.146</td>
-    <td>CIA Triad, Zero Trust</td>
-  </tr>
-</table></div>
+	 <div class="table-container">
+  <table>
+    <tr>
+      <th>Pharmaceutical</th>
+      <th>Electronics</th>
+      <th>Information Technology</th>
+    </tr>
+    <tr>
+      <td>cGMPs, Traceability</td>
+      <td>ESD</td>
+      <td>Agile, Scrum, PMBOK</td>
+    </tr>
+    <tr>
+      <td>Environmental, Health, and Safety (EHS), OSHA-10</td>
+      <td>ATE</td>
+      <td>GDPR, SOX, Gramm–Leach–Bliley Act (GLBA), HIPAA</td>
+    </tr>
+    <tr>
+      <td>Lock out Tag Out (LOTO)</td>
+      <td>HP 3070</td>
+      <td>ITIL, TCP/IP</td>
+    </tr>
+    <tr>
+      <td>ISO 9001, ISO 14644-5:2025, ISO 13485 - Medical Devices</td>
+      <td>SMT/THM Component Inspection</td>
+      <td>PenTesting, ISO/IEC 15408-5:2026, ISO/IEC 29100:2024</td>
+    </tr>
+    <tr>
+      <td>FIFO, PPE, MSDS</td>
+      <td>QC</td>
+      <td>NIST Cybersecurity Framework</td>
+    </tr>
+    <tr>
+      <td>Quality Management Systems (QMS), CAPA</td>
+      <td>QA</td>
+      <td>CIA Triad, Zero Trust</td>
+    </tr>
+  </table>
+</div> </div>
     </div>
 
     <div id="valueChart" class="animate-on-scroll">
